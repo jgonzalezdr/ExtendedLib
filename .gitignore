@@ -1,0 +1,6 @@
+/build*
+/coverage
+/.project
+/.cproject
+/.settings
+/lib/gendocs
