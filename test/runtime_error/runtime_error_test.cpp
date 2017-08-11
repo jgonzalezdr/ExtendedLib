@@ -51,7 +51,7 @@ TEST( runtime_error, Throw_NoLog )
     {
         // Verify
         STRCMP_EQUAL( "", e.get_category().c_str() );
-        STRCMP_EQUAL( __PRETTY_FUNCTION__, e.get_function().c_str() );
+        STRCMP_EQUAL( __FUNCTION_INFO__, e.get_function().c_str() );
         STRCMP_EQUAL( "TEST_ERR", e.get_message().c_str() );
         STRCMP_EQUAL( "TEST_ERR", e.what() );
     }
@@ -83,7 +83,7 @@ TEST( runtime_error, Throw_Log )
     {
         // Verify
         STRCMP_EQUAL( "", e.get_category().c_str() );
-        STRCMP_EQUAL( __PRETTY_FUNCTION__, e.get_function().c_str() );
+        STRCMP_EQUAL( __FUNCTION_INFO__, e.get_function().c_str() );
         STRCMP_EQUAL( "TEST_ERR", e.get_message().c_str() );
         STRCMP_EQUAL( "TEST_ERR", e.what() );
     }

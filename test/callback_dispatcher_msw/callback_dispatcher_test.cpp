@@ -35,7 +35,7 @@ extern "C" {
 WPARAM PostMessageUT_wParam;
 LPARAM PostMessageUT_lParam;
 
-WINBOOL WINAPI PostMessageUT( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam )
+BOOL WINAPI PostMessageUT( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam )
 {
    PostMessageUT_wParam = wParam;
    PostMessageUT_lParam = lParam;

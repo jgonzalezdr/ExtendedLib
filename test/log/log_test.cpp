@@ -88,6 +88,8 @@ TEST( log, PrioritySetting )
     ext::log::set_priority_limit( LOG_PRIORITY_MAX );
 }
 
+#ifdef __GNUC__
+
 /*
  * Check that C++ functions are simplified to only the name.
  */
@@ -121,6 +123,8 @@ TEST( log, FunctionSimplificationConstructor )
 
     // Cleanup
 }
+
+#endif // __GNUC__
 
 /*
  * Check that category is logged when present.

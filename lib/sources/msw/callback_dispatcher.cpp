@@ -17,7 +17,7 @@ using namespace ext;
 #define __PostMessage PostMessage
 #else
 extern "C" {
-WINBOOL WINAPI PostMessageUT( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam );
+BOOL WINAPI PostMessageUT( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam );
 }
 #define __PostMessage PostMessageUT
 #endif
