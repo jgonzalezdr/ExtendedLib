@@ -14,8 +14,8 @@
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>
 
-#include <ExtendedLib/msw/callback_dispatcher.h>
-#include <ExtendedLib/runtime_error.h>
+#include "Extended/msw/callback_dispatcher.hpp"
+#include "Extended/runtime_error.hpp"
 
 /*===========================================================================
  *                      COMMON TEST DEFINES & MACROS
@@ -68,7 +68,7 @@ TEST( callback_dispatcher_msw, Creation )
 
     // Verify
     CHECK_EQUAL( (HANDLE)NULL, callback_dispatcher.get_window_handle() );
-    CHECK_EQUAL( EXTENDEDLIB_DEFAULT_WM_EVENT, callback_dispatcher.get_message_id() );
+    CHECK_EQUAL( Extended_DEFAULT_WM_EVENT, callback_dispatcher.get_message_id() );
     mock().checkExpectations();
 
     // Cleanup
@@ -86,7 +86,7 @@ TEST( callback_dispatcher_msw, SharedInstance )
 
     // Verify
     CHECK_EQUAL( (HANDLE)NULL, callback_dispatcher.get_window_handle() );
-    CHECK_EQUAL( EXTENDEDLIB_DEFAULT_WM_EVENT, callback_dispatcher.get_message_id() );
+    CHECK_EQUAL( Extended_DEFAULT_WM_EVENT, callback_dispatcher.get_message_id() );
     mock().checkExpectations();
 
     // Cleanup

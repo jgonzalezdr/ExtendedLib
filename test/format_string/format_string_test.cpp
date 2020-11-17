@@ -11,7 +11,7 @@
  *                              INCLUDES
  *===========================================================================*/
 
-#include "ExtendedLib/format_string.h"
+#include "Extended/format_string.hpp"
 
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>

@@ -4,10 +4,9 @@ project( ExtendedLib.Test.callback )
 
 # Test configuration
 
-set( PROD_DIR ../../lib )
-
 include_directories(
-    ${PROD_DIR}/include
+    ${PROD_SOURCE_DIR}/include
+    ${PROD_BINARY_DIR}/include
 )
 
 set( TEST_SRC_FILES 

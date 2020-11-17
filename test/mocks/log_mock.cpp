@@ -3,10 +3,10 @@
  * @brief      Mocks for the log management related classes and macros
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2017 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/log.h"
+#include "Extended/log.hpp"
 
 #include <CppUTestExt/MockSupport.h>
 

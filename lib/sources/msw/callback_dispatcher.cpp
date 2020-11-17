@@ -3,13 +3,13 @@
  * @brief      Implementation for MSW of the 'callback_dispatcher' class
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/msw/callback_dispatcher.h"
-#include "../local_log.h"
-#include "ExtendedLib/runtime_error.h"
-#include "Helpers.h"
+#include "Extended/msw/callback_dispatcher.hpp"
+#include "../local_log.hpp"
+#include "Extended/runtime_error.hpp"
+#include "helpers.hpp"
 
 using namespace ext;
 
@@ -23,7 +23,7 @@ BOOL WINAPI PostMessageUT( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam );
 #endif
 
 callback_dispatcher::callback_dispatcher() noexcept
-    : m_windowHandle( NULL ), m_messageId( EXTENDEDLIB_DEFAULT_WM_EVENT )
+    : m_windowHandle( NULL ), m_messageId( Extended_DEFAULT_WM_EVENT )
 {
 }
 

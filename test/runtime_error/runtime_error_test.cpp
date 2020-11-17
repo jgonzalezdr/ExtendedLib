@@ -11,7 +11,7 @@
  *                              INCLUDES
  *===========================================================================*/
 
-#include "ExtendedLib/runtime_error.h"
+#include "Extended/runtime_error.hpp"
 
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>

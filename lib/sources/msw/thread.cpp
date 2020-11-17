@@ -3,14 +3,14 @@
  * @brief      Implementation for MSW of the 'thread' class
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/thread.h"
+#include "Extended/thread.hpp"
 #include <windows.h>
-#include "../local_log.h"
-#include "ExtendedLib/runtime_error.h"
-#include "Helpers.h"
+#include "../local_log.hpp"
+#include "Extended/runtime_error.hpp"
+#include "helpers.hpp"
 
 using namespace ext;
 

@@ -11,7 +11,7 @@
  *                              INCLUDES
  *===========================================================================*/
 
-#include "ExtendedLib/broadcaster.h"
+#include "Extended/broadcaster.hpp"
 
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>

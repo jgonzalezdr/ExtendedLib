@@ -3,7 +3,7 @@
  * @brief      Mocks for the win32 OS calls
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2017 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
 #include <Windows.h>

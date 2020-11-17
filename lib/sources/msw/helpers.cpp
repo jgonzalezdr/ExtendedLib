@@ -3,10 +3,10 @@
  * @brief      Implementation of MSW helper functions
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "helpers.h"
+#include "helpers.hpp"
 #include <Windows.h>
 
 std::string GetLastErrorAsString()

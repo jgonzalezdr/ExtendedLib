@@ -4,23 +4,22 @@ project( ExtendedLib.Test.runtime_error )
 
 # Test configuration
 
-set( PROD_DIR ../../lib )
-
 include_directories(
-    ${PROD_DIR}/include
-)
+     ${PROD_SOURCE_DIR}/include
+     ${PROD_BINARY_DIR}/include
+ )
 
 add_definitions( -DLOG_PRIORITY_MAX=7 )
 
 set( PROD_SRC_FILES
-     ${PROD_DIR}/sources/format_string.cpp
-     ${PROD_DIR}/sources/runtime_error.cpp
-     ${PROD_DIR}/sources/log.cpp
+     ${PROD_SOURCE_DIR}/sources/format_string.cpp
+     ${PROD_SOURCE_DIR}/sources/runtime_error.cpp
+     ${PROD_SOURCE_DIR}/sources/log.cpp
 )
 
 set( TEST_SRC_FILES
      runtime_error_test.cpp
-     ../mocks/win32_os_mock.cpp
+     ${MOCKS_DIR}/win32_os_mock.cpp
 )
 
 # Generate test target

@@ -3,10 +3,10 @@
  * @brief      Mocks for the error management related classes
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2017 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/runtime_error.h"
+#include "Extended/runtime_error.hpp"
 
 #include <CppUTestExt/MockSupport.h>
 

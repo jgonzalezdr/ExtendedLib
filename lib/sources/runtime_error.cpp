@@ -3,11 +3,11 @@
  * @brief      Implementation of the error management related classes
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/runtime_error.h"
-#include "ExtendedLib/format_string.h"
+#include "Extended/runtime_error.hpp"
+#include "Extended/format_string.hpp"
 
 using namespace ext;
 

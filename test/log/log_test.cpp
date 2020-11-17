@@ -11,7 +11,7 @@
  *                              INCLUDES
  *===========================================================================*/
 
-#include "ExtendedLib/log.h"
+#include "Extended/log.hpp"
 
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>
@@ -58,7 +58,7 @@ TEST( log, PrioritySetting )
         ext::log::set_priority_limit( i );
 
         // Verify
-        CHECK_EQUAL( i, ext::log::get_priority_limit() )
+        CHECK_EQUAL( i, ext::log::get_priority_limit() );
 
         for( int j = LOG_PRIORITY_ERROR; j <= (LOG_PRIORITY_ALLOC + 1); j++ )
         {

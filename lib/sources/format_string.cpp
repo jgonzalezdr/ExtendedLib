@@ -3,15 +3,15 @@
  * @brief      Implementation of the format family of functions
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/format_string.h"
+#include "Extended/format_string.hpp"
 
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "local_log.h"
+#include "local_log.hpp"
 
 #define _INITIAL_LENGTH    1024
 

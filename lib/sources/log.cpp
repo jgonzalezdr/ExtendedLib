@@ -3,10 +3,10 @@
  * @brief      Implementation of the log management related classes
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2016 Jesus Gonzalez
- * @license    BSD License (See LICENSE.txt)
+ * @license    See LICENSE.txt
  */
 
-#include "ExtendedLib/log.h"
+#include "Extended/log.hpp"
 
 #include <stdio.h>
 #include <string.h>
@@ -15,8 +15,8 @@
 #include <exception>
 #include <errno.h>
 
-#include "ExtendedLib/format_string.h"
-#include "ExtendedLib/runtime_error.h"
+#include "Extended/format_string.hpp"
+#include "Extended/runtime_error.hpp"
 
 using namespace ext;
 

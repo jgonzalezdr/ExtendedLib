@@ -14,7 +14,7 @@
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>
 
-#include "ExtendedLib/callback.h"
+#include "Extended/callback.hpp"
 
 /*===========================================================================
  *                      COMMON TEST DEFINES & MACROS
