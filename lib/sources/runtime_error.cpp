@@ -7,7 +7,7 @@
  */
 
 #include "Extended/runtime_error.hpp"
-#include "Extended/format_string.hpp"
+#include "Extended/string.hpp"
 
 using namespace ext;
 

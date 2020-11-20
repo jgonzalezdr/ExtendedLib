@@ -2,28 +2,28 @@ version: 1.0.0-{build}
 
 environment:
   matrix:
-  - Platform: LINUX-GCC
-    GccVersion: 9
-    Configuration: Coverage
-    APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+  # - Platform: LINUX-GCC
+  #   GccVersion: 9
+  #   Configuration: Coverage
+  #   APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
   - Platform: TDM-GCC-64
     PlatformToolset: 9.2.0
     Configuration: Coverage
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-  - Platform: LINUX-GCC
-    GccVersion: 9
-    Configuration: Release
-    GenerateInstaller: True
-    PublishArtifacts: True
-    APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
-  - Platform: LINUX-GCC
-    GccVersion: 8
-    Configuration: Release
-    APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
-  - Platform: LINUX-GCC
-    GccVersion: 7
-    Configuration: Release
-    APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+  # - Platform: LINUX-GCC
+  #   GccVersion: 9
+  #   Configuration: Release
+  #   GenerateInstaller: True
+  #   PublishArtifacts: True
+  #   APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+  # - Platform: LINUX-GCC
+  #   GccVersion: 8
+  #   Configuration: Release
+  #   APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+  # - Platform: LINUX-GCC
+  #   GccVersion: 7
+  #   Configuration: Release
+  #   APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
   - Platform: TDM-GCC-64
     PlatformToolset: 9.2.0
     Configuration: Release

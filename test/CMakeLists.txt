@@ -17,7 +17,7 @@ if( ENABLE_TEST )
     # Test modules
     #
 
-    add_subdirectory( format_string )
+    add_subdirectory( string )
     add_subdirectory( callback )
     add_subdirectory( dispatched_callback )
     add_subdirectory( broadcaster )

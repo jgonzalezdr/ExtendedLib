@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief      unit tests for the "format_string" module
+ * @brief      unit tests for the "string" module
  * @project    ExtendedLib
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) Jesus Gonzalez. All rights reserved.
@@ -11,7 +11,7 @@
  *                              INCLUDES
  *===========================================================================*/
 
-#include "Extended/format_string.hpp"
+#include "Extended/string.hpp"
 
 #include <CppUTest/TestHarness.h>
 #include <CppUTestExt/MockSupport.h>
@@ -24,7 +24,7 @@
  *                          TEST GROUP DEFINITION
  *===========================================================================*/
 
-TEST_GROUP( format_string )
+TEST_GROUP( string )
 {
 };
 
@@ -35,7 +35,7 @@ TEST_GROUP( format_string )
 /*
  * Check that a string is formatted properly
  */
-TEST( format_string, format )
+TEST( string, format )
 {
     // Prepare
 
@@ -51,7 +51,7 @@ TEST( format_string, format )
 /*
  * Check that a large string is formatted properly
  */
-TEST( format_string, format_large )
+TEST( string, format_large )
 {
     // Prepare
     std::string a( 800, 'A' );
@@ -72,7 +72,7 @@ TEST( format_string, format_large )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_1_NoIdent_NoSeparator_Line8 )
+TEST( string, format_hex_1_NoIdent_NoSeparator_Line8 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -90,7 +90,7 @@ TEST( format_string, format_hex_1_NoIdent_NoSeparator_Line8 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_1_Ident3_Separator2_Line8 )
+TEST( string, format_hex_1_Ident3_Separator2_Line8 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -109,7 +109,7 @@ TEST( format_string, format_hex_1_Ident3_Separator2_Line8 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_1_NoIdent_Separator1_Line16 )
+TEST( string, format_hex_1_NoIdent_Separator1_Line16 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -127,7 +127,7 @@ TEST( format_string, format_hex_1_NoIdent_Separator1_Line16 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_1_Ident4_Separator1_Line7 )
+TEST( string, format_hex_1_Ident4_Separator1_Line7 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -147,7 +147,7 @@ TEST( format_string, format_hex_1_Ident4_Separator1_Line7 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_2_EmptyIdent_EmptySeparator_Line8 )
+TEST( string, format_hex_2_EmptyIdent_EmptySeparator_Line8 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -165,7 +165,7 @@ TEST( format_string, format_hex_2_EmptyIdent_EmptySeparator_Line8 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_2_Ident3_Separator1_Line8 )
+TEST( string, format_hex_2_Ident3_Separator1_Line8 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -184,7 +184,7 @@ TEST( format_string, format_hex_2_Ident3_Separator1_Line8 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_1_Ident2_Separator1_Line16 )
+TEST( string, format_hex_1_Ident2_Separator1_Line16 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -202,7 +202,7 @@ TEST( format_string, format_hex_1_Ident2_Separator1_Line16 )
 /*
  * Check that a hex dump is formatted properly
  */
-TEST( format_string, format_hex_2_Ident4_Separator1_Line7 )
+TEST( string, format_hex_2_Ident4_Separator1_Line7 )
 {
     // Prepare
     std::vector<uint8_t> data( { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -215,6 +215,54 @@ TEST( format_string, format_hex_2_Ident4_Separator1_Line7 )
     STRCMP_EQUAL( "*** 00_01_02_03_04_05_06\n"
                   "*** 07_10_20_30_40_50_60\n"
                   "*** 70_FF", txt.c_str() );
+
+    // Cleanup
+}
+
+/*
+ * Check that uppercase transformation is performed properly
+ */
+TEST( string, to_uppercase )
+{
+    // Prepare
+
+    // Exercise
+    std::string res = ext::to_uppercase( "976234uL_;FgjkjYE?¿#@~" );
+
+    // Verify
+    STRCMP_EQUAL( "976234UL_;FGJKJYE?¿#@~", res.c_str() );
+
+    // Cleanup
+}
+
+/*
+ * Check that uppercase transformation is performed properly
+ */
+TEST( string, to_lowercase )
+{
+    // Prepare
+
+    // Exercise
+    std::string res = ext::to_lowercase( "976234uL_;FgjkjYE?¿#@~" );
+
+    // Verify
+    STRCMP_EQUAL( "976234ul_;fgjkjye?¿#@~", res.c_str() );
+
+    // Cleanup
+}
+
+/*
+ * Check that trimming transformation is performed properly
+ */
+TEST( string, trimg )
+{
+    // Prepare
+
+    // Exercise
+    std::string res = ext::trim( "   HJHJASDH ASJ_DH 67656h $%23  " );
+
+    // Verify
+    STRCMP_EQUAL( "HJHJASDH ASJ_DH 67656h $%23", res.c_str() );
 
     // Cleanup
 }

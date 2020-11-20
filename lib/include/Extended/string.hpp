@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief      Header for the format family of functions
+ * @brief      Header for the string helper functions
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2016 Jesus Gonzalez
  * @license    See LICENSE.txt
@@ -28,7 +28,7 @@
 namespace ext
 {
 
-///@defgroup format_string Format String
+///@defgroup String String Helpers
 ///@{
 
 /**
@@ -73,6 +73,30 @@ Extended_API std::string format_hex( const std::vector<uint8_t>& data, const std
  */
 Extended_API std::string format_hex( const std::vector<uint8_t>& data, unsigned int indent = 0, unsigned int separator = 1,
                                            unsigned int bytes_per_line = 16 );
+
+/**
+ * Converts a string to uppercase.
+ * 
+ * @param[in] str String to convert
+ * @return Input string converted to uppercase
+ */
+Extended_API std::string to_uppercase( const std::string &str );
+
+/**
+ * Converts a string to lowercase.
+ * 
+ * @param[in] str String to convert
+ * @return Input string converted to lowercase
+ */
+Extended_API std::string to_lowercase( const std::string &str );
+
+/**
+ * Trims leading and trailing whitespace.
+ * 
+ * @param[in] str String to trim
+ * @return Trimmed input string
+ */
+Extended_API std::string trim( const std::string &str );
 
 ///@}
 

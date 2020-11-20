@@ -39,7 +39,7 @@ endif()
 #
 
 set( SRC_LIST
-     sources/format_string.cpp
+     sources/string.cpp
      sources/log.cpp
      sources/runtime_error.cpp
 )
@@ -67,7 +67,7 @@ set( INC_LIST
      include/Extended/callback.hpp
      include/Extended/defs.hpp
      include/Extended/dispatched_callback.hpp
-     include/Extended/format_string.hpp
+     include/Extended/string.hpp
      include/Extended/log.hpp
      include/Extended/log_common.hpp
      include/Extended/memory.hpp

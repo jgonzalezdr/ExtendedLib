@@ -1,15 +1,16 @@
 /**
  * @file
- * @brief      Implementation of the format family of functions
+ * @brief      Implementation of the string helper functions
  * @authors    Jesus Gonzalez <jgonzalez@gdr-sistemas.com>
  * @copyright  Copyright (c) 2003-2016 Jesus Gonzalez
  * @license    See LICENSE.txt
  */
 
-#include "Extended/format_string.hpp"
+#include "Extended/string.hpp"
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <algorithm>
 
 #include "local_log.hpp"
 
@@ -85,4 +86,30 @@ std::string ext::format_hex( const std::vector<uint8_t>& data,
     std::string idt_str( indent, ' ' );
 
     return ext::format_hex( data, idt_str, sep_str, bytes_per_line );
+}
+
+std::string ext::to_uppercase( const std::string &str )
+{
+    std::string ret = str;
+    transform( ret.begin(), ret.end(), ret.begin(), ::toupper );
+    return ret;
+}
+
+std::string ext::to_lowercase( const std::string &str )
+{
+    std::string ret = str;
+    transform( ret.begin(), ret.end(), ret.begin(), ::tolower );
+    return ret;
+}
+
+std::string ext::trim( const std::string &str )
+{
+    std::string ret = str;
+    ret.erase( ret.begin(), std::find_if( ret.begin(), ret.end(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }));
+    ret.erase( std::find_if( ret.rbegin(), ret.rend(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }).base(), ret.end() );
+    return ret;
 }

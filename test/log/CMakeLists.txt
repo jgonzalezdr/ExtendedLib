@@ -12,7 +12,7 @@ include_directories(
 add_definitions( -DLOG_PRIORITY_MAX=7 )
 
 set( PROD_SRC_FILES
-     ${PROD_SOURCE_DIR}/sources/format_string.cpp
+     ${PROD_SOURCE_DIR}/sources/string.cpp
      ${PROD_SOURCE_DIR}/sources/runtime_error.cpp
      ${PROD_SOURCE_DIR}/sources/log.cpp
 )

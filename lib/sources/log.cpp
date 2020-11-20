@@ -15,7 +15,7 @@
 #include <exception>
 #include <errno.h>
 
-#include "Extended/format_string.hpp"
+#include "Extended/string.hpp"
 #include "Extended/runtime_error.hpp"
 
 using namespace ext;

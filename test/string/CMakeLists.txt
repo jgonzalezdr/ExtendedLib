@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.1 )
 
-project( ExtendedLib.Test.format_string )
+project( ExtendedLib.Test.string )
 
 # Test configuration
 
@@ -10,11 +10,11 @@ include_directories(
  )
 
 set( PROD_SRC_FILES
-     ${PROD_SOURCE_DIR}/sources/format_string.cpp
+     ${PROD_SOURCE_DIR}/sources/string.cpp
 )
 
 set( TEST_SRC_FILES
-     format_string_test.cpp
+     string_test.cpp
 )
 
 # Generate test target
