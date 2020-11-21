@@ -32,7 +32,7 @@ namespace ext
  * @see message_dispatcher
  */
 template <typename ObjectClass, typename ParamType>
-class dispatched_method_callback : public callback<const ext::shared_ptr<ParamType>&>
+class dispatched_method_callback : public callback<const std::shared_ptr<ParamType>&>
 {
 public:
     /**
@@ -42,7 +42,7 @@ public:
      * @param[in] method Instance method to be invoked on the object
      * @param[in] dispatcher Message dispatcher to be used when invoking the callback
      */
-    dispatched_method_callback( ObjectClass *object, void ( ObjectClass::*method )( const ext::shared_ptr<ParamType>& ),
+    dispatched_method_callback( ObjectClass *object, void ( ObjectClass::*method )( const std::shared_ptr<ParamType>& ),
                                 const callback_dispatcher& dispatcher = callback_dispatcher::get_instance() ) noexcept
         : m_finalCallback( new_callback( object, method ) ), m_dispatcher( dispatcher )
     {}
@@ -50,13 +50,13 @@ public:
     virtual ~dispatched_method_callback()
     {}
 
-    virtual void invoke( const ext::shared_ptr<ParamType> &param ) const override
+    virtual void invoke( const std::shared_ptr<ParamType> &param ) const override
     {
         m_dispatcher.dispatch( m_finalCallback, param );
     }
 
 private:
-    typename callback< const ext::shared_ptr<ParamType>& >::XPtrConst m_finalCallback;
+    typename std::shared_ptr<const callback< const std::shared_ptr<ParamType>& >> m_finalCallback;
     const callback_dispatcher& m_dispatcher;
 };
 
@@ -74,11 +74,11 @@ private:
  * @return A new dispatched callback instance
  */
 template <typename ObjectClass, typename ParamType>
-shared_ptr<callback< const ext::shared_ptr<ParamType>& >>
-new_dispatched_callback( ObjectClass *object, void ( ObjectClass::*method )( const ext::shared_ptr<ParamType>& ),
+std::shared_ptr<callback< const std::shared_ptr<ParamType>& >>
+new_dispatched_callback( ObjectClass *object, void ( ObjectClass::*method )( const std::shared_ptr<ParamType>& ),
                         const callback_dispatcher& dispatcher = callback_dispatcher::get_instance() ) noexcept
 {
-    return new dispatched_method_callback<ObjectClass, ParamType>( object, method, dispatcher );
+    return std::make_shared<dispatched_method_callback<ObjectClass, ParamType>>( object, method, dispatcher );
 }
 
 ///@}

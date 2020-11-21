@@ -50,7 +50,7 @@ TEST( method_callback, Creation )
     TestClass obj;
 
     // Exercise
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
 
     // Verify
     CHECK_TRUE( callback );
@@ -67,7 +67,7 @@ TEST( method_callback, Invocation )
     // Prepare
     const int value = 3546743;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     mock().expectOneCall("TestClass::TestCallback").onObject( &obj ).withParameter( "p", value );
 
     // Exercise

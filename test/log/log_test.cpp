@@ -149,7 +149,7 @@ TEST( log, WithCategory )
 TEST( log, WithLogHandler_NoConsoleOutput )
 {
     // Prepare
-    TestLogHandler::XPtr testLogHandler = new TestLogHandler;
+    std::shared_ptr<TestLogHandler> testLogHandler = std::make_shared<TestLogHandler>();
 
     mock().expectOneCall( "TestLogHandler::process" ).onObject( testLogHandler.get() ).withParameter( "prio", LOG_PRIORITY_ERROR )
                          .withParameter( "category", "TEST_CAT" ).withParameter( "function", "TEST_FUNC" )
@@ -178,7 +178,7 @@ TEST( log, WithLogHandler_NoConsoleOutput )
 TEST( log, WithLogHandler_ConsoleOutput )
 {
     // Prepare
-    TestLogHandler::XPtr testLogHandler = new TestLogHandler;
+    std::shared_ptr<TestLogHandler> testLogHandler = std::make_shared<TestLogHandler>();
 
     mock().expectOneCall( "TestLogHandler::process" ).onObject( testLogHandler.get() ).withParameter( "prio", LOG_PRIORITY_ERROR )
                          .withParameter( "category", "TEST_CAT" ).withParameter( "function", "TEST_FUNC" )

@@ -24,7 +24,7 @@
 class TestClass
 {
 public:
-    void TestCallback( const ext::shared_ptr<int> &p )
+    void TestCallback( const std::shared_ptr<int> &p )
     {
         mock().actualCall( "TestClass::TestCallback" ).onObject( this ).withParameter( "p", *p );
     }
@@ -145,7 +145,7 @@ TEST( callback_dispatcher_msw, Invocation_OK )
     callback_dispatcher.set_window_handle( hwnd );
     callback_dispatcher.set_message_id( msgId );
 
-    ext::callback<const ext::shared_ptr<int> &>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<const std::shared_ptr<int> &>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     std::shared_ptr<int> paramSharedPtr( paramValue );
 
     mock().expectOneCall( "::PostMessage" ).withParameter( "hWnd", hwnd ).withParameter( "Msg", msgId ).andReturnValue( true );
@@ -183,7 +183,7 @@ TEST( callback_dispatcher_msw, Invocation_ErrorPosting )
     callback_dispatcher.set_window_handle( hwnd );
     callback_dispatcher.set_message_id( msgId );
 
-    ext::callback<const ext::shared_ptr<int> &>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<const std::shared_ptr<int> &>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     std::shared_ptr<int> paramSharedPtr( paramValue );
 
     mock().expectOneCall( "::PostMessage" ).withParameter( "hWnd", hwnd ).withParameter( "Msg", msgId ).andReturnValue( false );
@@ -243,12 +243,12 @@ TEST( callback_dispatcher_msw, MessageProcessing_CallbackNotValid )
     callback_dispatcher.set_window_handle( hwnd );
     callback_dispatcher.set_message_id( msgId );
 
-    ext::callback<const ext::shared_ptr<int> &>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<const std::shared_ptr<int> &>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     std::shared_ptr<int> paramSharedPtr( paramValue );
 
     // The following variables
     std::weak_ptr< const ext::callback_dispatcher::generic_callback_t > *wk_callback = new std::weak_ptr< const ext::callback_dispatcher::generic_callback_t >( callback );
-    ext::shared_ptr<int> *sh_param = new ext::shared_ptr<int>( paramSharedPtr );
+    std::shared_ptr<int> *sh_param = new std::shared_ptr<int>( paramSharedPtr );
 
     callback.reset();
 

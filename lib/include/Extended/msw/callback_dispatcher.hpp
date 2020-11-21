@@ -76,7 +76,7 @@ public:
 
     ///@cond INTERNAL
 
-    typedef callback<const ext::shared_ptr<int> &> generic_callback_t;
+    typedef callback<const std::shared_ptr<int> &> generic_callback_t;
 
     /**
      * Invokes the asynchronous execution of the given callback with the given parameter on the GUI thread.
@@ -86,8 +86,8 @@ public:
      * @param[in] callback Callback to be invoked
      * @param[in] param Parameter to be passed to the callback when invoking it
      */
-    void dispatch( const ext::shared_ptr<const generic_callback_t> &callback,
-                const ext::shared_ptr<int> &param ) const;
+    void dispatch( const std::shared_ptr<const generic_callback_t> &callback,
+                   const std::shared_ptr<int> &param ) const;
 
     ///@endcond INTERNAL
 
@@ -99,11 +99,11 @@ public:
      * @tparam ParamType Type of the callback parameter
      */
     template<typename ParamType>
-    void dispatch( const ext::shared_ptr<const callback<const ext::shared_ptr<ParamType> &>> &callback,
-                const ext::shared_ptr<ParamType> &param ) const
+    void dispatch( const std::shared_ptr<const callback<const std::shared_ptr<ParamType> &>> &callback,
+                   const std::shared_ptr<ParamType> &param ) const
     {
-        dispatch( reinterpret_cast<const ext::shared_ptr<const generic_callback_t> &>( callback ),
-                reinterpret_cast<const ext::shared_ptr<int> &>( param ) );
+        dispatch( reinterpret_cast<const std::shared_ptr<const generic_callback_t> &>( callback ),
+                  reinterpret_cast<const std::shared_ptr<int> &>( param ) );
     }
 
     /**

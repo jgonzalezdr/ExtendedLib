@@ -70,10 +70,8 @@ set( INC_LIST
      include/Extended/string.hpp
      include/Extended/log.hpp
      include/Extended/log_common.hpp
-     include/Extended/memory.hpp
      include/Extended/callback_dispatcher.hpp
      include/Extended/runtime_error.hpp
-     include/Extended/shared_ptr.hpp
      include/Extended/thread.hpp
      include/Extended/${PLATFORM_DIR}/callback_dispatcher.hpp
      ${CMAKE_CURRENT_BINARY_DIR}/include/extended_config.hpp

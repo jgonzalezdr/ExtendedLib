@@ -67,7 +67,7 @@ TEST( broadcaster, AddListener_SelfId )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
 
     // Exercise
     broadcaster.add_listener( callback );
@@ -88,7 +88,7 @@ TEST( broadcaster, RemoveListener_SelfId_Proper )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     broadcaster.add_listener( callback );
 
     // Exercise
@@ -110,8 +110,8 @@ TEST( broadcaster, RemoveListener_SelfId_Other )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback1 = ext::new_callback( &obj, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback2 = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback1 = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback2 = ext::new_callback( &obj, &TestClass::TestCallback );
     broadcaster.add_listener( callback1 );
 
     // Exercise
@@ -133,7 +133,7 @@ TEST( broadcaster, AddListener_KeyId )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     void* key = (void*) 238445;
 
     // Exercise
@@ -155,7 +155,7 @@ TEST( broadcaster, RemoveListener_KeyId_Proper )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     void* key = (void*) 238445;
     broadcaster.add_listener( callback, key );
 
@@ -178,7 +178,7 @@ TEST( broadcaster, RemoveListenerKeyId_OtherKey )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     void* key1 = (void*) 238445;
     void* key2 = (void*) 34644;
     broadcaster.add_listener( callback, key1 );
@@ -202,7 +202,7 @@ TEST( broadcaster, RemoveListener_KeyId_SelfId )
     // Prepare
     ext::broadcaster<int> broadcaster;
     TestClass obj;
-    ext::callback<int>::XPtr callback = ext::new_callback( &obj, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback = ext::new_callback( &obj, &TestClass::TestCallback );
     void* key = (void*) 3444;
     broadcaster.add_listener( callback, key );
 
@@ -227,8 +227,8 @@ TEST( broadcaster, Broadcast_OneListener )
     ext::broadcaster<int> broadcaster;
     TestClass obj1;
     TestClass obj2;
-    ext::callback<int>::XPtr callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
     broadcaster.add_listener( callback1 );
     mock().expectOneCall("TestClass::TestCallback").onObject( &obj1 ).withParameter( "p", value );
 
@@ -252,9 +252,9 @@ TEST( broadcaster, Broadcast_MultipleListeners )
     TestClass obj1;
     TestClass obj2;
     TestClass obj3;
-    ext::callback<int>::XPtr callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback3 = ext::new_callback( &obj3, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback3 = ext::new_callback( &obj3, &TestClass::TestCallback );
     broadcaster.add_listener( callback1 );
     broadcaster.add_listener( callback3 );
     mock().expectOneCall("TestClass::TestCallback").onObject( &obj1 ).withParameter( "p", value );
@@ -280,9 +280,9 @@ TEST( broadcaster, Broadcast_AfterRemoval )
     TestClass obj1;
     TestClass obj2;
     TestClass obj3;
-    ext::callback<int>::XPtr callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
-    ext::callback<int>::XPtr callback3 = ext::new_callback( &obj3, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback1 = ext::new_callback( &obj1, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback2 = ext::new_callback( &obj2, &TestClass::TestCallback );
+    std::shared_ptr<ext::callback<int>> callback3 = ext::new_callback( &obj3, &TestClass::TestCallback );
     broadcaster.add_listener( callback1 );
     broadcaster.add_listener( callback2 );
     broadcaster.add_listener( callback3 );

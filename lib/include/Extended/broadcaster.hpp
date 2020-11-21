@@ -46,7 +46,7 @@ public:
         typename listeners_list_t::const_iterator it;
         for( it = m_listeners.begin(); it != m_listeners.end(); )
         {
-            const ext::shared_ptr<const broadcast_handler_t> &callback = it->second;
+            const std::shared_ptr<const broadcast_handler_t> &callback = it->second;
             // Increment is done here to avoid problems if the callback associated to this iterator is
             // erased inside the callback
             it++;
@@ -64,7 +64,7 @@ public:
      * @retval true if the listener was registered (i.e. it wasn't previously registered)
      * @retval false otherwise
      */
-    bool add_listener( const ext::shared_ptr<const broadcast_handler_t> &listener )
+    bool add_listener( const std::shared_ptr<const broadcast_handler_t> &listener )
     {
         return add_listener( listener, (void*) listener.get() );
     }
@@ -78,7 +78,7 @@ public:
      * @retval true if the listener was unregistered (i.e. it was previously registered)
      * @retval false otherwise
      */
-    bool remove_listener( const ext::shared_ptr<const broadcast_handler_t> &listener )
+    bool remove_listener( const std::shared_ptr<const broadcast_handler_t> &listener )
     {
         return remove_listener( (void*) listener.get() );
     }
@@ -94,7 +94,7 @@ public:
      * @retval true if the listener was registered (i.e. it wasn't previously registered with the same identifier)
      * @retval false otherwise
      */
-    bool add_listener( const ext::shared_ptr<const broadcast_handler_t> &listener, void* idKey )
+    bool add_listener( const std::shared_ptr<const broadcast_handler_t> &listener, void* idKey )
     {
         LockGuard lockGuard( m_mutex );
         std::pair<typename listeners_list_t::iterator, bool> ret = m_listeners.insert( typename listeners_list_t::value_type( idKey, listener ) );
@@ -131,13 +131,13 @@ public:
     /**
      * Returns the number of listener that are registered.
      */
-    unsigned int listeners_count() const noexcept
+    size_t listeners_count() const noexcept
     {
         return m_listeners.size();
     }
 
 private:
-    typedef std::map<void*, ext::shared_ptr<const broadcast_handler_t>> listeners_list_t;
+    typedef std::map<void*, std::shared_ptr<const broadcast_handler_t>> listeners_list_t;
     listeners_list_t m_listeners;
 
     mutable std::recursive_mutex m_mutex;

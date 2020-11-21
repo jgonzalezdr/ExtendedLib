@@ -11,8 +11,8 @@
 
 #include <string>
 #include <utility>
+#include <memory>
 #include "extended_config.hpp"
-#include "memory.hpp"
 
 namespace ext
 {
@@ -27,8 +27,6 @@ template <typename ParamType>
 class callback
 {
 public:
-    DECLARE_SHAREDPTR( callback )
-
     /* Destructor */
     virtual ~callback()
     {}
@@ -99,9 +97,9 @@ private:
  * @return A new callback instance
  */
 template <typename ObjectClass, typename ParamType>
-shared_ptr<callback<ParamType>> new_callback( ObjectClass *object, void ( ObjectClass::*method )( ParamType ) ) noexcept
+std::shared_ptr<callback<ParamType>> new_callback( ObjectClass *object, void ( ObjectClass::*method )( ParamType ) ) noexcept
 {
-    return new method_callback<ObjectClass, ParamType>( object, method );
+    return std::make_shared<method_callback<ObjectClass, ParamType>>( object, method );
 }
 
 ///@}

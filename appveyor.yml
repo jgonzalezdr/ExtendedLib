@@ -32,11 +32,11 @@ environment:
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
   - Platform: MinGW64
     PlatformToolset: 8.1.0
-    Configuration: Release
+    Configuration: Debug
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - Platform: MinGW64
     PlatformToolset: 7.3.0
-    Configuration: Release
+    Configuration: Debug
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
   - Platform: MSVC64
     Configuration: Release

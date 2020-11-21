@@ -12,9 +12,10 @@
 ///@defgroup log Logging
 ///@{
 
+#include <memory>
+
 #include "extended_config.hpp"
 #include "log_common.hpp"
-#include "memory.hpp"
 
 namespace ext
 {
@@ -26,8 +27,6 @@ namespace ext
 class Extended_API log_handler
 {
 public:
-    DECLARE_SHAREDPTR( log_handler )
-
     virtual ~log_handler()
     {}
 
@@ -43,8 +42,6 @@ public:
      */
     virtual bool process( int prio, const char* category, const char* function, const char* msg ) = 0;
 };
-
-template class Extended_API ext::shared_ptr<log_handler>;
 
 /**
  * The log singleton class provides access to the log management functionalities.
@@ -89,7 +86,7 @@ public:
     /**
      * Gets the currently installed log handler.
      */
-    static const log_handler::XPtr& get_log_handler() noexcept;
+    static const std::shared_ptr<log_handler>& get_log_handler() noexcept;
 
     /**
      * Sets a new log handler.
@@ -98,13 +95,15 @@ public:
      *
      * @param[in] userLogHandler New log handler
      */
-    static void set_log_handler( const log_handler::XPtr& userLogHandler ) noexcept;
+    static void set_log_handler( const std::shared_ptr<log_handler>& userLogHandler ) noexcept;
 
 private:
     log() {}; // Make it non-instantiable
 };
 
 } // namespace
+
+template class Extended_API std::shared_ptr<ext::log_handler>;
 
 ///@name Message Logging Macros
 ///@{

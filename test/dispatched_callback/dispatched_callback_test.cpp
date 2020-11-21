@@ -23,7 +23,7 @@
 class TestClass
 {
 public:
-    void TestCallback( const ext::shared_ptr< int > &p )
+    void TestCallback( const std::shared_ptr< int > &p )
     {
         mock().actualCall( "TestClass::TestCallback" ).onObject( this ).withParameter( "p", *p );
     }
@@ -40,8 +40,8 @@ public:
 
  std::weak_ptr<const ext::callback_dispatcher::generic_callback_t> g_dispatch_callback;
 
- void ext::callback_dispatcher::dispatch( const ext::shared_ptr<const generic_callback_t> &callback,
-                                        const ext::shared_ptr<int> &param ) const
+ void ext::callback_dispatcher::dispatch( const std::shared_ptr<const generic_callback_t> &callback,
+                                          const std::shared_ptr<int> &param ) const
  {
     mock().actualCall("ext::message_dispatcher::dispatch").onObject(this).withParameter("param", *param);
     g_dispatch_callback = callback;
@@ -70,7 +70,7 @@ TEST( method_dispatched_callback, Creation )
     TestClass obj;
 
     // Exercise
-    ext::callback<const ext::shared_ptr<int> &>::XPtr callback = ext::new_dispatched_callback( &obj, &TestClass::TestCallback, g_msg_dispatcher );
+    std::shared_ptr<ext::callback<const std::shared_ptr<int> &>> callback = ext::new_dispatched_callback( &obj, &TestClass::TestCallback, g_msg_dispatcher );
 
     // Verify
     CHECK_TRUE( callback );
@@ -87,9 +87,9 @@ TEST( method_dispatched_callback, Invocation )
     // Prepare
     const int value = 98976;
     g_dispatch_callback.reset();
-    ext::shared_ptr<int> param( new int(value) );
+    std::shared_ptr<int> param( new int(value) );
     TestClass obj;
-    ext::callback<const ext::shared_ptr<int> &>::XPtr callback = ext::new_dispatched_callback( &obj, &TestClass::TestCallback, g_msg_dispatcher );
+    std::shared_ptr<ext::callback<const std::shared_ptr<int> &>> callback = ext::new_dispatched_callback( &obj, &TestClass::TestCallback, g_msg_dispatcher );
     mock().expectOneCall("ext::message_dispatcher::dispatch").onObject( &g_msg_dispatcher ).withParameter( "param", value );
 
     // Exercise

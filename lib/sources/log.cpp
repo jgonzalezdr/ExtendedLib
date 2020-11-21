@@ -97,7 +97,7 @@ static const char* get_prio_end( int prio )
 }
 
 static int g_priorityLimit = LOG_PRIORITY_ALLOC;
-static log_handler::XPtr g_logHandler = NULL;
+static std::shared_ptr<log_handler> g_logHandler = NULL;
 
 #ifdef __GNUC__
 
@@ -186,12 +186,12 @@ void ext::log::set_priority_limit( int logPriorityLimit ) noexcept
     g_priorityLimit = logPriorityLimit;
 }
 
-const log_handler::XPtr & ext::log::get_log_handler() noexcept
+const std::shared_ptr<log_handler>& ext::log::get_log_handler() noexcept
 {
     return g_logHandler;
 }
 
-void ext::log::set_log_handler( const log_handler::XPtr & userLogHandler ) noexcept
+void ext::log::set_log_handler( const std::shared_ptr<log_handler>& userLogHandler ) noexcept
 {
     g_logHandler = userLogHandler;
 }
